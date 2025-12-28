@@ -52,3 +52,24 @@ export const currentUserRole = async () => {
         return { success: false, error: "Failed to fetch user role" }
     }
 }
+
+export const getCurrentUser = async () => {
+    const user = await currentUser()
+    if (!user) {
+        console.log("❌ No Clerk user found");
+        return null;
+    }
+    const dbUser = await db.user.findUnique({
+        where: {
+            clerkId: user.id
+        },
+        select: {
+            id: true
+        }
+    })
+    if (!dbUser) {
+        console.log("❌ User not found in DB for clerkId:", user.id);
+        return null;
+    }
+    return dbUser
+}
