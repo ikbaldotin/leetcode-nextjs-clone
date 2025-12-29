@@ -169,3 +169,24 @@ export const executeCode = async (source_code, language_id, stdin, expected_outp
     return { success: true, submission: submissionWithTestCases };
 
 }
+
+export const getAllSubmissionByCurrentUserForProblem = async (problemId) => {
+    const user = await currentUser()
+    const dbUser = await db.user.findUnique({
+        where: {
+            where: {
+                clerkId: user.id
+            },
+            select: {
+                id: true
+            }
+        }
+    })
+    const submission = await db.submission.findMany({
+        where: {
+            problemId: problemId,
+            id: dbUser.id
+        }
+    })
+    return { success: true, data: submission }
+}
