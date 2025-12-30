@@ -1,3 +1,5 @@
+"use dynamic";
+
 import {
   Code2,
   Trophy,
@@ -10,6 +12,8 @@ import {
   Sun,
   Menu,
 } from "lucide-react";
+
+export const dynamic = "force-dynamic";
 import { Button } from "@/components/ui/button";
 import {
   Card,

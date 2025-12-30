@@ -1,6 +1,10 @@
+"use dynamic";
+
 import { currentUserRole } from "@/modules/auth/actions";
 import Navber from "@/modules/home/components/navber";
 import React from "react";
+
+export const dynamic = "force-dynamic";
 
 const RootLayout = async ({ children }) => {
   const userRole = await currentUserRole();

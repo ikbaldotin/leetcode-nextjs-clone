@@ -1,7 +1,11 @@
+"use dynamic";
+
 import { db } from "@/lib/db";
 import { getAllProblems } from "@/modules/problems/actions";
 import ProblemsTable from "@/modules/problems/components/problem-table";
 import { currentUser } from "@clerk/nextjs/server";
+
+export const dynamic = "force-dynamic";
 
 const ProblemsPage = async () => {
   const user = await currentUser();
