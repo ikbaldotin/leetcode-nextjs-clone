@@ -7,6 +7,8 @@ import UserInfoCard from "@/modules/profile/components/user-info";
 
 import React from "react";
 
+export const dynamic = "force-dynamic";
+
 const ProfilePage = async () => {
   const profileData = await getCurrentUserData();
 
